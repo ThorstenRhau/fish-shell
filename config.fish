@@ -37,12 +37,8 @@ if status is-interactive
       set -gx EDITOR "vim"
     end
 
-#    # Source fish colors and create aliases
-#    if test -d "$HOME/git/nightfox.nvim"
-#      source "$HOME/.config/fish/themes/current.fish"
-#      alias dayfish "ln -sf $HOME/git/nightfox.nvim/extra/dayfox/nightfox_fish.fish \
-#        $HOME/.config/fish/themes/current.fish"
-#      alias nightfish "ln -sf $HOME/git/nightfox.nvim/extra/nightfox/nightfox_fish.fish \
-#        $HOME/.config/fish/themes/current.fish"
-#    end
+    if test -d "$HOME/git/tokyonight.nvim"
+      alias night_kitty='ln -sf $HOME/git/tokyonight.nvim/extras/kitty/tokyonight_night.conf $HOME/.config/kitty/current-theme.conf'
+      alias day_kitty='ln -sf $HOME/git/tokyonight.nvim/extras/kitty/tokyonight_day.conf $HOME/.config/kitty/current-theme.conf'
+    end
 end
