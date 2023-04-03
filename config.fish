@@ -36,9 +36,4 @@ if status is-interactive
     else if type -q vim
       set -gx EDITOR "vim"
     end
-
-    if test -d "$HOME/git/tokyonight.nvim"
-      alias night_kitty='ln -sf $HOME/git/tokyonight.nvim/extras/kitty/tokyonight_night.conf $HOME/.config/kitty/current-theme.conf'
-      alias day_kitty='ln -sf $HOME/git/tokyonight.nvim/extras/kitty/tokyonight_day.conf $HOME/.config/kitty/current-theme.conf'
-    end
 end
