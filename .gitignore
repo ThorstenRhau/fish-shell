@@ -1,2 +1,4 @@
-functions/fish_prompt.fish.bak
+functions/
+completions/
+conf.d/
 fish_variables
