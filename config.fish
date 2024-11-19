@@ -45,6 +45,8 @@ if status is-interactive
     # Set aliases
     alias ll='ls -lah'
     alias g='git'
+    alias gca='git commit -a'
+    alias gst='git status'
     alias dc='docker-compose'
     alias nv='nvim'
 
