@@ -56,6 +56,7 @@ if status is-interactive
     alias gp='git push'
     alias glog='git log --oneline --graph --decorate -n 20'
     alias gca='git commit -a'
+    alias gc='git commit' 
     alias python='python3'
     alias pip='pip3'
     alias ssh "TERM=xterm-256color command ssh"
@@ -81,11 +82,23 @@ if status is-interactive
         set -gx DELTA_FEATURES "dark-mode"
         set -gx LS_COLORS (vivid generate catppuccin-macchiato)
         fish_config theme choose "Catppuccin Macchiato"
+        set -Ux FZF_DEFAULT_OPTS "\
+        --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
+        --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
+        --color=marker:#b7bdf8,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
+        --color=selected-bg:#494d64 \
+        --multi"
     else
         # Light theme stuff
         set -gx DELTA_FEATURES "light-mode"
         set -gx LS_COLORS (vivid generate catppuccin-latte)
         fish_config theme choose "Catppuccin Latte"
+        set -Ux FZF_DEFAULT_OPTS "\
+        --color=bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39 \
+        --color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78 \
+        --color=marker:#7287fd,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39 \
+        --color=selected-bg:#bcc0cc \
+        --multi"
     end
 end
 
