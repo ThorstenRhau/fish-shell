@@ -1,12 +1,17 @@
 if status is-interactive
+    # Cursor styles
+    set -gx fish_vi_force_cursor 1
+    set -gx fish_cursor_default block
+    set -gx fish_cursor_insert line blink
+    set -gx fish_cursor_visual block
+    set -gx fish_cursor_replace_one underscore
+
     # Add directories to PATH
+    set -x fish_user_paths
     fish_add_path $HOME/bin
     fish_add_path $HOME/.local/bin
     fish_add_path /usr/local/bin
     fish_add_path /Applications/WezTerm.app/Contents/MacOS
-
-    # Set environment variables
-    set -gx PAGER less
 
     # Commands to run in interactive sessions can go here
     set -U fish_greeting # Disable greeting function
@@ -29,21 +34,20 @@ if status is-interactive
     set -gx LC_CTYPE "en_US.UTF-8"
     set -gx LANG "en_US.UTF-8"
     set -gx TERM "wezterm"
+    set -gx PAGER less
 
     # eza setup (replacement for ls)
     if type -q eza
         alias ls "eza --header --git"
     end
 
-    # NeoVIM setup with fallback to vim
-    if type -q nvim
-        set -gx EDITOR "nvim"
-        set -gx VISUAL $EDITOR
-        alias nv "nvim"
-    else if type -q vim
-        set -gx EDITOR "vim"
-    end
+    # NeoVim as editor for everything
+    set -gx EDITOR (which nvim)
+    set -gx VISUAL $EDITOR
+    set -gx SUDO_EDITOR $EDITOR
 
+    # Fish
+    set fish_emoji_width 2
 
     # Set aliases
     alias nv='nvim'
@@ -54,6 +58,10 @@ if status is-interactive
     alias gca='git commit -a'
     alias python='python3'
     alias pip='pip3'
+    alias ssh "TERM=xterm-256color command ssh"
+    alias mosh "TERM=xterm-256color command mosh"
+    alias trhau='env TERM="xterm-256color" mosh --ssh="ssh -C -p 9898" thorre@helio.home -- tmux -2 attach'
+    alias srhau='env TERM="xterm-256color" ssh -C -p 9898 -t thorre@helio.home tmux -2 attach || env TERM="xterm-256color" ssh -C -p 9898 -t thorre@helio.home tmux -2 -u new'
 
     zoxide init fish | source
 
@@ -69,20 +77,15 @@ if status is-interactive
     set -l appearance (defaults read -g AppleInterfaceStyle 2>/dev/null)
 
     if test "$appearance" = "Dark"
-            # Dark theme stuff
-            set -gx DELTA_FEATURES "dark-mode"
-            set -gx LS_COLORS (vivid generate catppuccin-macchiato)
-        echo dark mode set
+        # Dark theme stuff
+        set -gx DELTA_FEATURES "dark-mode"
+        set -gx LS_COLORS (vivid generate catppuccin-macchiato)
+        fish_config theme choose "Catppuccin Macchiato"
     else
-            # Light theme stuff
-            set -gx DELTA_FEATURES "light-mode"
-            set -gx LS_COLORS (vivid generate catppuccin-latte)
-        echo light mode set
-    end
-
-    # Configure fish greeting
-    function fish_greeting
-        echo "Welcome to fish, Thorsten! 🐟"
+        # Light theme stuff
+        set -gx DELTA_FEATURES "light-mode"
+        set -gx LS_COLORS (vivid generate catppuccin-latte)
+        fish_config theme choose "Catppuccin Latte"
     end
 end
 
