@@ -29,12 +29,11 @@ if status is-interactive
     end
 
     # General variables
-    set -gx MANPAGER "nvim +Man! -"
+    set -gx PAGER bat
     set -gx GREP_OPTIONS "--color=auto"
     set -gx LC_CTYPE "en_US.UTF-8"
     set -gx LANG "en_US.UTF-8"
     set -gx TERM "wezterm"
-    set -gx PAGER less
 
     # eza setup (replacement for ls)
     if type -q eza
@@ -45,6 +44,7 @@ if status is-interactive
     set -gx EDITOR (which nvim)
     set -gx VISUAL $EDITOR
     set -gx SUDO_EDITOR $EDITOR
+    set -gx MANPAGER "nvim +Man! -"
 
     # Fish
     set fish_emoji_width 2
