@@ -57,6 +57,8 @@ if status is-interactive
     alias glog='git log --oneline --graph --decorate -n 20'
     alias gca='git commit -a'
     alias gc='git commit' 
+    alias gd='git diff'
+    alias gpristine='git reset --hard && git clean --force -dfx'
     alias python='python3'
     alias pip='pip3'
     alias ssh "TERM=xterm-256color command ssh"
