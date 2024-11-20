@@ -34,6 +34,7 @@ if status is-interactive
     set -gx LC_CTYPE "en_US.UTF-8"
     set -gx LANG "en_US.UTF-8"
     set -gx TERM "wezterm"
+    set -gx XDG_CONFIG_HOME "$HOME/.config"
 
     # eza setup (replacement for ls)
     if type -q eza
