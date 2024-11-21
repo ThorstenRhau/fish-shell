@@ -28,6 +28,12 @@ if status is-interactive
         end
     end
 
+    # Loading secrets if they exist
+    set secrets_file "$HOME/.config/fish/fish_secrets"
+    if test -f $secrets_file
+        source $secrets_file
+    end
+
     # General variables
     set -gx PAGER bat
     set -gx GREP_OPTIONS "--color=auto"
