@@ -30,7 +30,7 @@ if status is-interactive
 
     # Loading secrets if they exist
     set secrets_file "$HOME/.config/fish/fish_secrets"
-    if test -f $secrets_file
+    if test -r $secrets_file
         source $secrets_file
     end
 
