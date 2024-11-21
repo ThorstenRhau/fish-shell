@@ -13,7 +13,7 @@ git clone https://github.com/ThorstenRhau/fish-shell.git ~/.config/fish
 Install dependencies
 
 ```sh
-brew install fisher
+brew install fisher bat eza zoxide vivid starship git-delta
 ```
 
 Install fish plugins with fisher
