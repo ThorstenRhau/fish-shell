@@ -1,11 +1,4 @@
 if status is-interactive
-    # Cursor styles
-    set -gx fish_vi_force_cursor 1
-    set -gx fish_cursor_default block
-    set -gx fish_cursor_insert line blink
-    set -gx fish_cursor_visual block
-    set -gx fish_cursor_replace_one underscore
-
     # Add directories to PATH
     set -x fish_user_paths
     fish_add_path $HOME/bin
@@ -13,8 +6,8 @@ if status is-interactive
     fish_add_path /usr/local/bin
     fish_add_path /Applications/WezTerm.app/Contents/MacOS
 
-    # Commands to run in interactive sessions can go here
-    set -U fish_greeting # Disable greeting function
+    set -gx fish_greeting # Disable greeting function
+    set -gx fish_history_limit 100000
 
     # Homebrew setup
     if test -d /opt/homebrew
@@ -28,14 +21,7 @@ if status is-interactive
         end
     end
 
-    # Loading secrets if they exist
-    set secrets_file "$HOME/.config/fish/fish_secrets"
-    if test -r $secrets_file
-        source $secrets_file
-    end
-
     # General variables
-    set -gx PAGER bat
     set -gx GREP_OPTIONS "--color=auto"
     set -gx LC_CTYPE "en_US.UTF-8"
     set -gx LANG "en_US.UTF-8"
@@ -47,14 +33,25 @@ if status is-interactive
         alias ls "eza --header --git"
     end
 
-    # NeoVim as editor for everything
-    set -gx EDITOR (which nvim)
-    set -gx VISUAL $EDITOR
-    set -gx SUDO_EDITOR $EDITOR
-    set -gx MANPAGER "nvim +Man! -"
+    # NeoVim as editor for everything, if installed
+    if type nvim > /dev/null
+        set -gx EDITOR (which nvim)
+        set -gx VISUAL $EDITOR
+        set -gx SUDO_EDITOR $EDITOR
+        set -gx MANPAGER "nvim +Man! -"
+    end
 
-    # Fish
-    set fish_emoji_width 2
+    # Loading secrets if they exist
+    set secrets_file "$HOME/.config/fish/fish_secrets"
+    if test -r $secrets_file
+        source $secrets_file
+    end
+
+    # bat pager setup, if installed
+    if type bat > /dev/null
+        alias cat=bat
+        set -gx PAGER bat
+    end
 
     # Set aliases
     alias nv='nvim'
@@ -91,7 +88,7 @@ if status is-interactive
         set -gx DELTA_FEATURES "dark-mode"
         set -gx LS_COLORS (vivid generate catppuccin-macchiato)
         fish_config theme choose "Catppuccin Macchiato"
-        set -Ux FZF_DEFAULT_OPTS "\
+        set -gx FZF_DEFAULT_OPTS "\
         --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
         --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
         --color=marker:#b7bdf8,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
@@ -102,7 +99,7 @@ if status is-interactive
         set -gx DELTA_FEATURES "light-mode"
         set -gx LS_COLORS (vivid generate catppuccin-latte)
         fish_config theme choose "Catppuccin Latte"
-        set -Ux FZF_DEFAULT_OPTS "\
+        set -gx FZF_DEFAULT_OPTS "\
         --color=bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39 \
         --color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78 \
         --color=marker:#7287fd,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39 \
