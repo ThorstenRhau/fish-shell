@@ -73,6 +73,23 @@ if status is-interactive
     zoxide init fish | source
 
     fzf --fish | source
+    function __fzf_search_history
+        set selected_command (history | fzf \
+        --height 40% \
+        --layout=reverse \
+        --border \
+        --info=inline \
+        --prompt="CMD history > " \
+        --marker="→ ")
+
+        # If a command is selected, replace the current command line with it
+        if test -n "$selected_command"
+            commandline --replace $selected_command
+        end
+    end
+
+    # Bind Ctrl-R to the enhanced fzf history search
+    bind \cr __fzf_search_history
 
     set -gx STARSHIP_SHELL fish
     starship init fish | source
