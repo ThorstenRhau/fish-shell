@@ -35,6 +35,7 @@ if status is-interactive
 
     # NeoVim as editor for everything, if installed
     if type nvim > /dev/null
+        abbr nv 'nvim'
         set -gx EDITOR (which nvim)
         set -gx VISUAL $EDITOR
         set -gx SUDO_EDITOR $EDITOR
@@ -54,23 +55,23 @@ if status is-interactive
     end
 
     # Set aliases
-    alias nv='nvim'
-    alias gst='git status'
-    alias gl='git pull'
-    alias gp='git push'
-    alias glog='git log --oneline --graph --decorate -n 20'
-    alias gca='git commit -a'
-    alias gc='git commit' 
-    alias gd='git diff'
-    alias gpristine='git reset --hard && git clean --force -dfx'
-    alias python='python3'
-    alias pip='pip3'
-    alias ssh "TERM=xterm-256color command ssh"
-    alias mosh "TERM=xterm-256color command mosh"
-    alias trhau='env TERM="xterm-256color" mosh --ssh="ssh -C -p 9898" thorre@helio.home -- tmux -2 attach'
-    alias srhau='env TERM="xterm-256color" ssh -C -p 9898 -t thorre@helio.home tmux -2 attach || env TERM="xterm-256color" ssh -C -p 9898 -t thorre@helio.home tmux -2 -u new'
+    abbr gst 'git status'
+    abbr gl 'git pull'
+    abbr gp 'git push'
+    abbr glog 'git log --oneline --graph --decorate -n 20'
+    abbr gca 'git commit -a'
+    abbr gc 'git commit' 
+    abbr gd 'git diff'
+    abbr gpristine 'git reset --hard && git clean --force -dfx'
+    abbr python 'python3'
+    abbr pip 'pip3'
+    abbr ssh "TERM=xterm-256color command ssh"
+    abbr mosh "TERM=xterm-256color command mosh"
+    abbr trhau 'env TERM="xterm-256color" mosh --ssh="ssh -C -p 9898" thorre@helio.home -- tmux -2 attach'
+    abbr srhau 'env TERM="xterm-256color" ssh -C -p 9898 -t thorre@helio.home tmux -2 attach || env TERM="xterm-256color" ssh -C -p 9898 -t thorre@helio.home tmux -2 -u new'
 
     zoxide init fish | source
+    bind \cz zi 
 
     fzf --fish | source
     function __fzf_search_history
@@ -94,8 +95,6 @@ if status is-interactive
     set -gx STARSHIP_SHELL fish
     starship init fish | source
 
-    # Zoxide interactive via ctrl-z
-    bind \cz zi 
 
     # Read the AppleInterfaceStyle preference for light/dark appearance
     set -l appearance (defaults read -g AppleInterfaceStyle 2>/dev/null)
@@ -124,4 +123,3 @@ if status is-interactive
         --multi"
     end
 end
-
