@@ -1,5 +1,5 @@
-fish_secrets
-functions/
 completions/
 conf.d/
 fish_variables
+functions/
+secrets.fish
