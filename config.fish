@@ -106,12 +106,6 @@ if status is-interactive
     set -gx FZF_TMUX 0
     set -gx FZF_COMPLETION_TRIGGER '**'
 
-    #                                  ╭──────────╮
-    #                                  │ Starship │
-    #                                  ╰──────────╯
-    set -gx STARSHIP_SHELL fish
-    starship init fish | source
-
     #                       ╭────────────────────────────────╮
     #                       │ macOS light / dark theme setup │
     #                       ╰────────────────────────────────╯
@@ -140,4 +134,11 @@ if status is-interactive
         --color=selected-bg:#bcc0cc \
         --multi"
     end
+
+    #                                  ╭──────────╮
+    #                                  │ Starship │
+    #                                  ╰──────────╯
+    set -gx STARSHIP_SHELL fish
+    starship init fish | source
+
 end
