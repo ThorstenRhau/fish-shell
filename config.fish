@@ -26,7 +26,7 @@ if status is-interactive
     #                                  │ Variables │
     #                                  ╰───────────╯
     set -gx fish_greeting # Disable greeting function
-    set -gx fish_history_limit 100000
+    set -gx fish_history_limit 10000
     set -gx GREP_OPTIONS "--color=auto"
     set -gx LC_CTYPE "en_US.UTF-8"
     set -gx LANG "en_US.UTF-8"
