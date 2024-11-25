@@ -54,7 +54,9 @@ if status is-interactive
         set -gx PAGER bat
     end
 
-    # Set aliases
+    #       ╭───────────────────────────╮
+    #       │ Aliases and abbreviations │
+    #       ╰───────────────────────────╯
     abbr gst 'git status'
     abbr gl 'git pull'
     abbr gp 'git push'
@@ -70,28 +72,38 @@ if status is-interactive
     abbr trhau 'env TERM="xterm-256color" mosh --ssh="ssh -C -p 9898" thorre@helio.home -- tmux -2 attach'
     abbr srhau 'env TERM="xterm-256color" ssh -C -p 9898 -t thorre@helio.home tmux -2 attach || env TERM="xterm-256color" ssh -C -p 9898 -t thorre@helio.home tmux -2 -u new'
 
+    #         ╭─────────────────────────────╮
+    #         │ Zoxide setup and keybinding │
+    #         ╰─────────────────────────────╯
     zoxide init fish | source
     bind \cz zi 
 
+    #         ╭─────────────────────────╮
+    #         │ fzf setup and variables │
+    #         ╰─────────────────────────╯
     fzf --fish | source
-    function __fzf_search_history
-        set selected_command (history | fzf \
-        --height 40% \
-        --layout=reverse \
-        --border \
-        --info=inline \
-        --prompt="CMD history > " \
-        --marker="→ ")
+    # Default command for fzf when no input is provided
+    set -gx FZF_DEFAULT_COMMAND 'fd --type f --hidden --exclude .git'
+    # Command specifically for the Ctrl-T key binding
+    set -gx FZF_CTRL_T_COMMAND 'fd --type f --hidden --exclude .git'
+    # Options for fzf when used with Ctrl-T
+    set -gx FZF_CTRL_T_OPTS '--preview "bat --style=numbers --color=always {}" --preview-window=right:60% --border'
+    # Command for listing directories with Alt-C
+    set -gx FZF_ALT_C_COMMAND 'fd --type d --hidden --exclude .git'
+    # Options for fzf when used with Alt-C
+    set -gx FZF_ALT_C_OPTS '--preview "ls -al {}" --preview-window=down:40%'
+    # Options for reverse search with Ctrl-R
+    set -gx FZF_CTRL_R_OPTS '--height 40% --layout=reverse --info=inline --border'
+    # Global default options for fzf
+    set -gx FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
+    # Enable fzf integration with tmux
+    set -gx FZF_TMUX 0
+    # Trigger for fzf-based completions
+    set -gx FZF_COMPLETION_TRIGGER '**'
 
-        # If a command is selected, replace the current command line with it
-        if test -n "$selected_command"
-            commandline --replace $selected_command
-        end
-    end
-
-    # Bind Ctrl-R to the enhanced fzf history search
-    bind \cr __fzf_search_history
-
+    #         ╭───────────────────────╮
+    #         │ Starship prompt setup │
+    #         ╰───────────────────────╯
     set -gx STARSHIP_SHELL fish
     starship init fish | source
 
