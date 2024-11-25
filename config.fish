@@ -116,6 +116,7 @@ if status is-interactive
         set -gx DELTA_FEATURES "dark-mode"
         set -gx LS_COLORS (vivid generate catppuccin-macchiato)
         fish_config theme choose "Catppuccin Macchiato"
+        set -gx BAT_THEME "Catppuccin Macchiato"
         set -gx FZF_DEFAULT_OPTS "\
         --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
         --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
@@ -127,6 +128,7 @@ if status is-interactive
         set -gx DELTA_FEATURES "light-mode"
         set -gx LS_COLORS (vivid generate catppuccin-latte)
         fish_config theme choose "Catppuccin Latte"
+        set -gx BAT_THEME "Catppuccin Latte"
         set -gx FZF_DEFAULT_OPTS "\
         --color=bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39 \
         --color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78 \
