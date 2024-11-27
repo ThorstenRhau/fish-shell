@@ -82,8 +82,8 @@ if status is-interactive
     abbr pip 'pip3'
     abbr ssh "TERM=xterm-256color command ssh"
     abbr mosh "TERM=xterm-256color command mosh"
-    abbr trhau 'env TERM="xterm-256color" mosh --ssh="ssh -C -p 9898" thorre@helio.home -- tmux -2 attach'
-    abbr srhau 'env TERM="xterm-256color" ssh -C -p 9898 -t thorre@helio.home tmux -2 attach || env TERM="xterm-256color" ssh -C -p 9898 -t thorre@helio.home tmux -2 -u new'
+    alias trhau 'env TERM="xterm-256color" mosh --ssh="ssh -C -p 9898" thorre@helio.home -- tmux -2 attach'
+    alias srhau 'env TERM="xterm-256color" ssh -C -p 9898 -t thorre@helio.home tmux -2 attach || env TERM="xterm-256color" ssh -C -p 9898 -t thorre@helio.home tmux -2 -u new'
 
     #                                   ╭────────╮
     #                                   │ zoxide │
