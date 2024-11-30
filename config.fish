@@ -17,9 +17,6 @@ if status is-interactive
         set -gx HOMEBREW_NO_ANALYTICS 1
         fish_add_path -p /opt/homebrew/sbin
         fish_add_path -p /opt/homebrew/bin
-        if test -f "$HOME/.brew_api_token"
-            source "$HOME/.brew_api_token"
-        end
     end
 
     #                                  ╭───────────╮
