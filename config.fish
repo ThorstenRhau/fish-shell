@@ -14,6 +14,7 @@ if status is-interactive
     safe_add_path $HOME/bin
     safe_add_path $HOME/.local/bin
     safe_add_path $HOME/.cache/lm-studio/bin
+    safe_add_path $HOME/.rd/bin
     safe_add_path /usr/local/bin
     safe_add_path /Applications/WezTerm.app/Contents/MacOS
 
