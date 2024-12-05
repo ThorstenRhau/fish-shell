@@ -2,11 +2,20 @@ if status is-interactive
     #                                    ╭──────╮
     #                                    │ PATH │
     #                                    ╰──────╯
-    set -x fish_user_paths
-    fish_add_path $HOME/bin
-    fish_add_path $HOME/.local/bin
-    fish_add_path /usr/local/bin
-    fish_add_path /Applications/WezTerm.app/Contents/MacOS
+    # Initialize fish_user_paths if not already set
+    set -q fish_user_paths; or set -x fish_user_paths
+
+    # Function to safely add a directory to PATH
+    function safe_add_path
+        if test -d $argv[1]
+            fish_add_path $argv[1]
+        end
+    end
+    safe_add_path $HOME/bin
+    safe_add_path $HOME/.local/bin
+    safe_add_path $HOME/.cache/lm-studio/bin
+    safe_add_path /usr/local/bin
+    safe_add_path /Applications/WezTerm.app/Contents/MacOS
 
     #                                  ╭──────────╮
     #                                  │ Homebrew │
