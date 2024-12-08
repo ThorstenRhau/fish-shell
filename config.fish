@@ -70,7 +70,7 @@ if status is-interactive
     #                                     │ bat │
     #                                     ╰─────╯
     if type bat > /dev/null
-        alias cat=bat
+        alias cat="bat -p"
         set -gx PAGER bat
     end
 
