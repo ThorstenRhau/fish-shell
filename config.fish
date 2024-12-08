@@ -41,6 +41,7 @@ if status is-interactive
     if test -d /Applications/WezTerm.app
         set -gx TERM "wezterm"
     end
+    set -gx MOSH_ENABLE_WIDECHAR 1
 
     #                                     ╭─────╮
     #                                     │ eza │
