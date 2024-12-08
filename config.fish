@@ -37,8 +37,10 @@ if status is-interactive
     set -gx GREP_OPTIONS "--color=auto"
     set -gx LC_CTYPE "en_US.UTF-8"
     set -gx LANG "en_US.UTF-8"
-    set -gx TERM "wezterm"
     set -gx XDG_CONFIG_HOME "$HOME/.config"
+    if test -d /Applications/WezTerm.app
+        set -gx TERM "wezterm"
+    end
 
     #                                     ╭─────╮
     #                                     │ eza │
