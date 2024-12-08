@@ -126,11 +126,13 @@ if status is-interactive
         # Dark theme stuff
         set -gx DELTA_FEATURES "dark-mode"
         fish_config theme choose "tokyonight_night"
+        source ~/.config/fish/themes/tokyonight_night.fish
         set -gx BAT_THEME "tokyonight_night"
     else
         # Light theme stuff
         set -gx DELTA_FEATURES "light-mode"
         fish_config theme choose "tokyonight_day"
+        source ~/.config/fish/themes/tokyonight_day.fish
         set -gx BAT_THEME "tokyonight_day"
     end
 
