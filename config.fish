@@ -125,29 +125,13 @@ if status is-interactive
     if test "$appearance" = "Dark"
         # Dark theme stuff
         set -gx DELTA_FEATURES "dark-mode"
-        set -gx LS_COLORS (vivid generate catppuccin-macchiato)
-        fish_config theme choose "Catppuccin Mocha"
-        set -gx BAT_THEME "Catppuccin Mocha"
-        set -x STARSHIP_CONFIG "$HOME/github/macOS/dotfiles/starship-dark.toml"
-        set -gx FZF_DEFAULT_OPTS "\
-        --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
-        --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
-        --color=marker:#b7bdf8,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
-        --color=selected-bg:#494d64 \
-        --multi"
+        fish_config theme choose "tokyonight_night"
+        set -gx BAT_THEME "tokyonight_night"
     else
         # Light theme stuff
         set -gx DELTA_FEATURES "light-mode"
-        set -gx LS_COLORS (vivid generate catppuccin-latte)
-        fish_config theme choose "Catppuccin Latte"
-        set -gx BAT_THEME "Catppuccin Latte"
-        set -gx STARSHIP_CONFIG "$HOME/github/macOS/dotfiles/starship-light.toml"
-        set -gx FZF_DEFAULT_OPTS "\
-        --color=bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39 \
-        --color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78 \
-        --color=marker:#7287fd,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39 \
-        --color=selected-bg:#bcc0cc \
-        --multi"
+        fish_config theme choose "tokyonight_day"
+        set -gx BAT_THEME "tokyonight_day"
     end
 
     #                                  ╭──────────╮
