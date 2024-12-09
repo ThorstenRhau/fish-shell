@@ -120,7 +120,12 @@ if status is-interactive
     #                       ╭────────────────────────────────╮
     #                       │ macOS light / dark theme setup │
     #                       ╰────────────────────────────────╯
-    set -l appearance (defaults read -g AppleInterfaceStyle 2>/dev/null; or echo "Dark")
+
+    if type -q defaults
+        set -l appearance (defaults read -g AppleInterfaceStyle 2>/dev/null)
+    else
+        set -l appearance "Dark"
+    end
 
     if test "$appearance" = "Dark"
         # Dark theme stuff
