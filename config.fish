@@ -120,7 +120,7 @@ if status is-interactive
     #                       ╭────────────────────────────────╮
     #                       │ macOS light / dark theme setup │
     #                       ╰────────────────────────────────╯
-    set -l appearance (defaults read -g AppleInterfaceStyle 2>/dev/null)
+    set -l appearance (defaults read -g AppleInterfaceStyle 2>/dev/null; or echo "Dark")
 
     if test "$appearance" = "Dark"
         # Dark theme stuff
@@ -135,11 +135,4 @@ if status is-interactive
         source ~/.config/fish/themes/tokyonight_day.fish
         set -gx BAT_THEME "tokyonight_day"
     end
-
-    #                                  ╭──────────╮
-    #                                  │ Starship │
-    #                                  ╰──────────╯
-    set -gx STARSHIP_SHELL fish
-    starship init fish | source
-
 end
