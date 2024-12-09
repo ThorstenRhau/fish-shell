@@ -135,4 +135,11 @@ if status is-interactive
         source ~/.config/fish/themes/tokyonight_day.fish
         set -gx BAT_THEME "tokyonight_day"
     end
+
+    #                                  ╭──────────╮
+    #                                  │ Starship │
+    #                                  ╰──────────╯
+    set -gx STARSHIP_SHELL fish
+    starship init fish | source
+
 end
