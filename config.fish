@@ -122,9 +122,9 @@ if status is-interactive
     #                       ╰────────────────────────────────╯
 
     if type -q defaults
-        set -l appearance (defaults read -g AppleInterfaceStyle 2>/dev/null)
+        set -gx appearance (defaults read -g AppleInterfaceStyle 2>/dev/null)
     else
-        set -l appearance "Dark"
+        set -gx appearance "Dark"
     end
 
     if test "$appearance" = "Dark"
