@@ -61,12 +61,17 @@ if status is-interactive
         set -gx MANPAGER "nvim +Man! -"
     end
 
-    #                                   ╭─────────╮
-    #                                   │ Secrets │
-    #                                   ╰─────────╯
+    #                            ╭──────────────────────╮
+    #                            │ sourcing local files │
+    #                            ╰──────────────────────╯
     set secrets_file "$HOME/.config/fish/secrets.fish"
     if test -r $secrets_file
         source $secrets_file
+    end
+
+    set local_file "$HOME/.config/fish/local.fish"
+    if test -r $local_file
+        source $local_file
     end
 
     #                                     ╭─────╮
@@ -93,8 +98,6 @@ if status is-interactive
     abbr ya 'yazi'
     alias ssh "TERM=xterm-256color command ssh"
     alias mosh "TERM=xterm-256color command mosh"
-    alias trhau 'env TERM="xterm-256color" mosh --ssh="ssh -C -p 9898" thorre@helio.home -- tmux -2 attach'
-    alias srhau 'env TERM="xterm-256color" ssh -C -p 9898 -t thorre@helio.home tmux -2 attach || env TERM="xterm-256color" ssh -C -p 9898 -t thorre@helio.home tmux -2 -u new'
 
     #                                   ╭────────╮
     #                                   │ zoxide │
