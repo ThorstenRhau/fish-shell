@@ -124,11 +124,26 @@ if status is-interactive
     #                       │ macOS light / dark theme setup │
     #                       ╰────────────────────────────────╯
 
+    # macOS check for light/dark appearance
     if type -q defaults
         set -gx appearance (defaults read -g AppleInterfaceStyle 2>/dev/null)
     else
         set -gx appearance "Dark"
     end
+
+
+    # Setting lazygit theme
+    if type -q lazygit
+        if test -f $HOME/.config/lazygit/tokyonight_night.yml
+            set -gx lazygit_config "$HOME/.config/lazygit/config.yml"
+            if test "$appearance" = "Dark"
+                ln -sf "$HOME/.config/lazygit/tokyonight_night.yml" "$lazygit_config"
+            else
+                ln -sf "$HOME/.config/lazygit/tokyonight_day.yml" "$lazygit_config"
+            end
+        end
+    end
+
 
     if test "$appearance" = "Dark"
         # Dark theme stuff
