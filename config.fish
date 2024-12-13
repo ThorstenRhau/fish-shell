@@ -85,19 +85,20 @@ if status is-interactive
     #                               ╭────────────────╮
     #                               │ abbr and alias │
     #                               ╰────────────────╯
-    abbr gst 'git status'
-    abbr gl 'git pull'
-    abbr gp 'git push'
-    abbr glog 'git log --oneline --graph --decorate -n 20'
-    abbr gca 'git commit -a'
     abbr gc 'git commit' 
+    abbr gca 'git commit -a'
     abbr gd 'git diff'
+    abbr gl 'git pull'
+    abbr glog 'git log --oneline --graph --decorate -n 20'
+    abbr gp 'git push'
     abbr gpristine 'git reset --hard && git clean --force -dfx'
-    abbr python 'python3'
+    abbr gst 'git status'
+    abbr lg 'lazygit'
     abbr pip 'pip3'
+    abbr python 'python3'
     abbr ya 'yazi'
-    alias ssh "TERM=xterm-256color command ssh"
     alias mosh "TERM=xterm-256color command mosh"
+    alias ssh "TERM=xterm-256color command ssh"
 
     #                                   ╭────────╮
     #                                   │ zoxide │
