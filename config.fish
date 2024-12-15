@@ -102,7 +102,7 @@ if status is-interactive
     #                                   ╭────────╮
     #                                   │ zoxide │
     #                                   ╰────────╯
-    if test -x zoxide
+    if type zoxide > /dev/null
         zoxide init fish | source
         bind \cz zi 
         alias cd z
@@ -111,17 +111,18 @@ if status is-interactive
     #                                     ╭─────╮
     #                                     │ fzf │
     #                                     ╰─────╯
-    fzf --fish | source
-    set -gx FZF_DEFAULT_COMMAND 'fd --type f --hidden --exclude .git'
-    set -gx FZF_CTRL_T_COMMAND 'fd --type f --hidden --exclude .git'
-    set -gx FZF_CTRL_T_OPTS '--preview "bat --style=numbers --color=always {}" --preview-window=right:60% --border'
-    set -gx FZF_ALT_C_COMMAND 'fd --type d --hidden --exclude .git'
-    set -gx FZF_ALT_C_OPTS '--preview "ls -al {}" --preview-window=down:40%'
-    set -gx FZF_CTRL_R_OPTS '--height 40% --layout=reverse --info=inline --border'
-    set -gx FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
-    set -gx FZF_TMUX 0
-    set -gx FZF_COMPLETION_TRIGGER '**'
-
+    if type fzf > /dev/null
+        fzf --fish | source
+        set -gx FZF_DEFAULT_COMMAND 'fd --type f --hidden --exclude .git'
+        set -gx FZF_CTRL_T_COMMAND 'fd --type f --hidden --exclude .git'
+        set -gx FZF_CTRL_T_OPTS '--preview "bat --style=numbers --color=always {}" --preview-window=right:60% --border'
+        set -gx FZF_ALT_C_COMMAND 'fd --type d --hidden --exclude .git'
+        set -gx FZF_ALT_C_OPTS '--preview "ls -al {}" --preview-window=down:40%'
+        set -gx FZF_CTRL_R_OPTS '--height 40% --layout=reverse --info=inline --border'
+        set -gx FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
+        set -gx FZF_TMUX 0
+        set -gx FZF_COMPLETION_TRIGGER '**'
+    end
     #                       ╭────────────────────────────────╮
     #                       │ macOS light / dark theme setup │
     #                       ╰────────────────────────────────╯
