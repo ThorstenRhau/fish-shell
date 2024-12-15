@@ -145,6 +145,17 @@ if status is-interactive
         end
     end
 
+    # Setting fzf theme
+    if type -q fzf
+        if test -f $HOME/.config/fish/themes/fzf/tokyonight_night.sh
+            if test "$appearance" = "Dark"
+                source $HOME/.config/fish/themes/fzf/tokyonight_night.sh
+            else
+                source $HOME/.config/fish/themes/fzf/tokyonight_day.sh
+            end
+        end
+    end
+
 
     if test "$appearance" = "Dark"
         # Dark theme stuff
