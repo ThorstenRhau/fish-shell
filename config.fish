@@ -73,14 +73,6 @@ if status is-interactive
         source $local_file
     end
 
-    #                                     ╭─────╮
-    #                                     │ bat │
-    #                                     ╰─────╯
-    if type bat > /dev/null
-        alias cat="bat -p"
-        set -gx PAGER bat
-    end
-
     #                               ╭────────────────╮
     #                               │ abbr and alias │
     #                               ╰────────────────╯
@@ -92,12 +84,20 @@ if status is-interactive
     abbr gp 'git push'
     abbr gpristine 'git reset --hard && git clean --force -dfx'
     abbr gst 'git status'
-    abbr lg 'lazygit'
     abbr pip 'pip3'
     abbr python 'python3'
     abbr ya 'yazi'
     alias mosh "TERM=xterm-256color command mosh"
     alias ssh "TERM=xterm-256color command ssh"
+
+    #                                     ╭─────╮
+    #                                     │ bat │
+    #                                     ╰─────╯
+    if type bat > /dev/null
+        alias cat="bat -p"
+        set -gx PAGER bat
+    end
+
 
     #                                   ╭────────╮
     #                                   │ zoxide │
@@ -123,6 +123,8 @@ if status is-interactive
         set -gx FZF_TMUX 0
         set -gx FZF_COMPLETION_TRIGGER '**'
     end
+
+
     #                       ╭────────────────────────────────╮
     #                       │ macOS light / dark theme setup │
     #                       ╰────────────────────────────────╯
@@ -135,8 +137,12 @@ if status is-interactive
     end
 
 
-    # Setting lazygit theme
+    # LazyGit themes and settings
     if type -q lazygit
+        abbr lg 'lazygit'
+        bind \e\cg "lazygit"
+        bind \e\cs "lazygit status"
+        bind \e\cl "lazygit log"
         if test -f $HOME/.config/lazygit/tokyonight_night.yml
             set -gx lazygit_config "$HOME/.config/lazygit/config.yml"
             if test "$appearance" = "Dark"
