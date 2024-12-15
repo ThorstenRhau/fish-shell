@@ -102,9 +102,11 @@ if status is-interactive
     #                                   ╭────────╮
     #                                   │ zoxide │
     #                                   ╰────────╯
-    zoxide init fish | source
-    bind \cz zi 
-    alias cd z
+    if test -x zoxide
+        zoxide init fish | source
+        bind \cz zi 
+        alias cd z
+    end
 
     #                                     ╭─────╮
     #                                     │ fzf │
