@@ -143,12 +143,12 @@ if status is-interactive
         bind \e\cg "lazygit"
         bind \e\cs "lazygit status"
         bind \e\cl "lazygit log"
-        if test -f $HOME/.config/lazygit/tokyonight_night.yml
+        if test -f "$HOME/.config/fish/themes/lazygit/tokyonight_day.conf"
             set -gx lazygit_config "$HOME/.config/lazygit/config.yml"
             if test "$appearance" = "Dark"
-                ln -sf "$HOME/.config/lazygit/tokyonight_night.yml" "$lazygit_config"
+                ln -sf "$HOME/.config/fish/themes/lazygit/tokyonight_night.yml" "$lazygit_config"
             else
-                ln -sf "$HOME/.config/lazygit/tokyonight_day.yml" "$lazygit_config"
+                ln -sf "$HOME/.config/fish/themes/lazygit/tokyonight_day.yml" "$lazygit_config"
             end
         end
     end
