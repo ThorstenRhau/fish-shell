@@ -143,6 +143,10 @@ if status is-interactive
         bind \e\cg "lazygit"
         bind \e\cs "lazygit status"
         bind \e\cl "lazygit log"
+        # Creating configuration directory if it does not exist
+        if not test -d "$HOME/.config/lazygit"
+            mkdir -p "$HOME/.config/lazygit"
+        end
         if test -f "$HOME/.config/fish/themes/lazygit/tokyonight_day.conf"
             set -gx lazygit_config "$HOME/.config/lazygit/config.yml"
             if test "$appearance" = "Dark"
