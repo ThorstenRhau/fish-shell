@@ -80,7 +80,7 @@ if status is-interactive
     abbr gca 'git commit -a'
     abbr gd 'git diff'
     abbr gl 'git pull'
-    abbr glog 'git log --oneline --graph --decorate -n 20'
+    abbr glg 'git log --oneline --graph --decorate -n 20'
     abbr gp 'git push'
     abbr gpristine 'git reset --hard && git clean --force -dfx'
     abbr gst 'git status'
