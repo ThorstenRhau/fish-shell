@@ -1,4 +1,13 @@
 if status is-interactive
+
+    #                        ╭──────────────────────────────╮
+    #                        │ Ghostty terminal integration │
+    #                        ╰──────────────────────────────╯
+    set -g ghostty_integration "$GHOSTTY_RESOURCES_DIR/shell-integration/fish/vendor_conf.d/ghostty-shell-integration.fish"
+    if test -f "$ghostty_integration"
+        source "$ghostty_integration"
+    end
+
     #                                    ╭──────╮
     #                                    │ PATH │
     #                                    ╰──────╯
