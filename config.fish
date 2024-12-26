@@ -16,7 +16,7 @@ if status is-interactive
     safe_add_path $HOME/.cache/lm-studio/bin
     safe_add_path $HOME/.rd/bin
     safe_add_path /usr/local/bin
-    safe_add_path /Applications/WezTerm.app/Contents/MacOS
+    #safe_add_path /Applications/WezTerm.app/Contents/MacOS
 
     #                                  ╭──────────╮
     #                                  │ Homebrew │
@@ -38,9 +38,9 @@ if status is-interactive
     set -gx LC_CTYPE "en_US.UTF-8"
     set -gx LANG "en_US.UTF-8"
     set -gx XDG_CONFIG_HOME "$HOME/.config"
-    if test -d /Applications/WezTerm.app
-        set -gx TERM "wezterm"
-    end
+    #if test -d /Applications/WezTerm.app
+    #    set -gx TERM "wezterm"
+    #end
 
     #                                     ╭─────╮
     #                                     │ eza │
