@@ -111,7 +111,6 @@ if status is-interactive
         set -gx FZF_COMPLETION_TRIGGER '**'
     end
 
-
     #                       ╭────────────────────────────────╮
     #                       │ macOS light / dark theme setup │
     #                       ╰────────────────────────────────╯
@@ -122,7 +121,6 @@ if status is-interactive
     else
         set -gx appearance "Dark"
     end
-
 
     # LazyGit themes and settings
     if type -q lazygit
