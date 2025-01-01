@@ -111,31 +111,35 @@ if status is-interactive
         set -gx FZF_COMPLETION_TRIGGER '**'
     end
 
-    #                       ╭────────────────────────────────╮
-    #                       │ macOS light / dark theme setup │
-    #                       ╰────────────────────────────────╯
-
-    # macOS check for light/dark appearance
-    if type -q defaults
-        set -gx appearance (defaults read -g AppleInterfaceStyle 2>/dev/null)
-    else
-        set -gx appearance "Dark"
-    end
-
-    # LazyGit themes and settings
+    #                                   ╭─────────╮
+    #                                   │ Lazygit │
+    #                                   ╰─────────╯
     if type -q lazygit
         abbr lg 'lazygit'
         abbr lgs "lazygit status"
         abbr lgl "lazygit log"
     end
 
-    if test "$appearance" = "Dark"
-        # Dark theme stuff
-        fish_config theme choose "Rosé Pine"
-    else
-        # Light theme stuff
-        fish_config theme choose "Rosé Pine Dawn"
-    end
+    #                       ╭────────────────────────────────╮
+    #                       │ macOS light / dark theme setup │
+    #                       ╰────────────────────────────────╯
+
+    # macOS check for light/dark appearance
+    #if type -q defaults
+    #    set -gx appearance (defaults read -g AppleInterfaceStyle 2>/dev/null)
+    #else
+    #    set -gx appearance "Dark"
+    #end
+
+    #if test "$appearance" = "Dark"
+    #    # Dark theme stuff
+    #    fish_config theme choose "Rosé Pine"
+    #else
+    #    # Light theme stuff
+    #    fish_config theme choose "Rosé Pine Dawn"
+    #end
+
+    fish_config theme choose Lava
 
     #                                  ╭──────────╮
     #                                  │ Starship │
