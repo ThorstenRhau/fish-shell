@@ -86,15 +86,6 @@ if status is-interactive
     alias mosh "TERM=xterm-256color command mosh"
     alias ssh "TERM=xterm-256color command ssh"
 
-    #                                     ╭─────╮
-    #                                     │ bat │
-    #                                     ╰─────╯
-    if type bat > /dev/null
-        alias cat="bat -p"
-        set -gx PAGER bat
-    end
-
-
     #                                   ╭────────╮
     #                                   │ zoxide │
     #                                   ╰────────╯
@@ -136,47 +127,16 @@ if status is-interactive
     # LazyGit themes and settings
     if type -q lazygit
         abbr lg 'lazygit'
-        bind \e\cg "lazygit"
-        bind \e\cs "lazygit status"
-        bind \e\cl "lazygit log"
-        # Creating configuration directory if it does not exist
-        if not test -d "$HOME/.config/lazygit"
-            mkdir -p "$HOME/.config/lazygit"
-        end
-        if test -f "$HOME/.config/fish/themes/lazygit/tokyonight_day.conf"
-            set -gx lazygit_config "$HOME/.config/lazygit/config.yml"
-            if test "$appearance" = "Dark"
-                ln -sf "$HOME/.config/fish/themes/lazygit/tokyonight_night.yml" "$lazygit_config"
-            else
-                ln -sf "$HOME/.config/fish/themes/lazygit/tokyonight_day.yml" "$lazygit_config"
-            end
-        end
+        abbr lgs "lazygit status"
+        abbr lgl "lazygit log"
     end
-
-    # Setting fzf theme
-    if type -q fzf
-        if test -f $HOME/.config/fish/themes/fzf/tokyonight_night.sh
-            if test "$appearance" = "Dark"
-                source $HOME/.config/fish/themes/fzf/tokyonight_night.sh
-            else
-                source $HOME/.config/fish/themes/fzf/tokyonight_day.sh
-            end
-        end
-    end
-
 
     if test "$appearance" = "Dark"
         # Dark theme stuff
-        set -gx DELTA_FEATURES "dark-mode"
-        fish_config theme choose "tokyonight_night"
-        source ~/.config/fish/themes/tokyonight_night.fish
-        set -gx BAT_THEME "tokyonight_night"
+        fish_config theme choose "Rosé Pine"
     else
         # Light theme stuff
-        set -gx DELTA_FEATURES "light-mode"
-        fish_config theme choose "tokyonight_day"
-        source ~/.config/fish/themes/tokyonight_day.fish
-        set -gx BAT_THEME "tokyonight_day"
+        fish_config theme choose "Rosé Pine Dawn"
     end
 
     #                                  ╭──────────╮
