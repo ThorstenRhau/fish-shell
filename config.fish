@@ -105,8 +105,8 @@ if status is-interactive
         set -gx FZF_CTRL_T_OPTS '--preview "bat --style=numbers --color=always {}" --preview-window=right:60% --border'
         set -gx FZF_ALT_C_COMMAND 'fd --type d --hidden --exclude .git'
         set -gx FZF_ALT_C_OPTS '--preview "ls -al {}" --preview-window=down:40%'
-        set -gx FZF_CTRL_R_OPTS '--height 40% --layout=reverse --info=inline --border'
-        set -gx FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
+        set -gx FZF_CTRL_R_OPTS '--height 40% --layout=reverse --info=inline --border=rounded'
+        set -gx FZF_DEFAULT_OPTS '--height 40% --layout=reverse --info=inline --border=rounded'
         set -gx FZF_TMUX 0
         set -gx FZF_COMPLETION_TRIGGER '**'
     end
@@ -125,21 +125,41 @@ if status is-interactive
     #                       ╰────────────────────────────────╯
 
     # macOS check for light/dark appearance
-    #if type -q defaults
-    #    set -gx appearance (defaults read -g AppleInterfaceStyle 2>/dev/null)
-    #else
-    #    set -gx appearance "Dark"
-    #end
+    if type -q defaults
+        set -gx appearance (defaults read -g AppleInterfaceStyle 2>/dev/null)
+    else
+        set -gx appearance "Dark" -- Fallback to Dark if not on macOS
+    end
 
-    #if test "$appearance" = "Dark"
-    #    # Dark theme stuff
-    #    fish_config theme choose "Rosé Pine"
-    #else
-    #    # Light theme stuff
-    #    fish_config theme choose "Rosé Pine Dawn"
-    #end
+    # Set fish theme
+    if test "$appearance" = "Dark"
+        # Dark theme stuff
+        fish_config theme choose "Rosé Pine"
+    else
+        # Light theme stuff
+        fish_config theme choose "Rosé Pine Dawn"
+    end
 
-    fish_config theme choose Lava
+    # Check if bat exists and set theme, also for the delta pager
+    if type -q bat
+        set -gx BAT_STYLE "changes"
+        if test "$appearance" = "Dark"
+            set theme "rose-pine"
+            set -gx DELTA_THEME "$theme"
+            alias cat "bat --theme $theme"
+        else
+            set theme "rose-pine-dawn"
+            set -gx DELTA_THEME "$theme"
+            alias cat "bat --theme $theme"
+        end
+    end
+
+    # Set fzf theme
+    if test "$appearance" = "Dark"
+        source "$HOME/.config/fish/themes/fzf/rose-pine.fish"
+    else
+        source "$HOME/.config/fish/themes/fzf/rose-pine-dawn.fish"
+    end
 
     #                                  ╭──────────╮
     #                                  │ Starship │
