@@ -126,10 +126,10 @@ if status is-interactive
     # Set fish theme
     if test "$appearance" = "Dark"
         # Dark theme stuff
-        fish_config theme choose "Catppuccin Mocha"
+        fish_config theme choose "tokyonight_night"
     else
         # Light theme stuff
-        fish_config theme choose "Catppuccin Latte"
+        fish_config theme choose "tokyonight_day"
     end
 
     # Check if bat exists and set theme, also for the delta pager
@@ -137,9 +137,9 @@ if status is-interactive
         set -gx BAT_STYLE "changes" #Check man-page for further options
 
         if test "$appearance" = "Dark"
-            set theme '"Catppuccin Mocha"'
+            set theme '"tokyonight_night"'
         else
-            set theme '"Catppuccin Latte"'
+            set theme '"tokyonight_day"'
         end
 
         set -gx DELTA_THEME "$theme"
@@ -148,9 +148,9 @@ if status is-interactive
 
     # Set fzf theme
     if test "$appearance" = "Dark"
-        source "$HOME/.config/fish/themes/fzf/catppuccin-mocha.fish"
+        source "$HOME/.config/fish/themes/fzf/tokyonight_night.sh"
     else
-        source "$HOME/.config/fish/themes/fzf/catppuccin-latte.fish"
+        source "$HOME/.config/fish/themes/fzf/tokyonight_day.sh"
     end
 
     # LazyGit
