@@ -134,21 +134,21 @@ if status is-interactive
     # Set fish theme
     if test "$appearance" = "Dark"
         # Dark theme stuff
-        fish_config theme choose "Rosé Pine"
+        fish_config theme choose "Catppuccin Mocha"
     else
         # Light theme stuff
-        fish_config theme choose "Rosé Pine Dawn"
+        fish_config theme choose "Catppuccin Latte"
     end
 
     # Check if bat exists and set theme, also for the delta pager
     if type -q bat
         set -gx BAT_STYLE "changes"
         if test "$appearance" = "Dark"
-            set theme "rose-pine"
+            set theme "Catppuccin Mocha"
             set -gx DELTA_THEME "$theme"
             alias cat "bat --theme $theme"
         else
-            set theme "rose-pine-dawn"
+            set theme "Catppuccin Latte"
             set -gx DELTA_THEME "$theme"
             alias cat "bat --theme $theme"
         end
@@ -156,9 +156,9 @@ if status is-interactive
 
     # Set fzf theme
     if test "$appearance" = "Dark"
-        source "$HOME/.config/fish/themes/fzf/rose-pine.fish"
+        source "$HOME/.config/fish/themes/fzf/catppuccin-mocha.fish"
     else
-        source "$HOME/.config/fish/themes/fzf/rose-pine-dawn.fish"
+        source "$HOME/.config/fish/themes/fzf/catppuccin-latte.fish"
     end
 
     #                                  ╭──────────╮
