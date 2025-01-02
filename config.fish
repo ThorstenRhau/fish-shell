@@ -111,14 +111,6 @@ if status is-interactive
         set -gx FZF_COMPLETION_TRIGGER '**'
     end
 
-    #                                   ╭─────────╮
-    #                                   │ Lazygit │
-    #                                   ╰─────────╯
-    if type -q lazygit
-        abbr lg 'lazygit'
-        abbr lgs "lazygit status"
-        abbr lgl "lazygit log"
-    end
 
     #                       ╭────────────────────────────────╮
     #                       │ macOS light / dark theme setup │
@@ -142,16 +134,16 @@ if status is-interactive
 
     # Check if bat exists and set theme, also for the delta pager
     if type -q bat
-        set -gx BAT_STYLE "changes"
+        set -gx BAT_STYLE "changes" #Check man-page for further options
+
         if test "$appearance" = "Dark"
-            set theme "Catppuccin Mocha"
-            set -gx DELTA_THEME "$theme"
-            alias cat "bat --theme $theme"
+            set theme '"Catppuccin Mocha"'
         else
-            set theme "Catppuccin Latte"
-            set -gx DELTA_THEME "$theme"
-            alias cat "bat --theme $theme"
+            set theme '"Catppuccin Latte"'
         end
+
+        set -gx DELTA_THEME "$theme"
+        alias cat "bat --theme $theme"
     end
 
     # Set fzf theme
@@ -161,6 +153,19 @@ if status is-interactive
         source "$HOME/.config/fish/themes/fzf/catppuccin-latte.fish"
     end
 
+    # LazyGit
+    if type -q lazygit
+        abbr lg 'lazygit'
+        abbr lgs "lazygit status"
+        abbr lgl "lazygit log"
+
+        if test "$appearance" = "Dark"
+            set -gx LG_CONFIG_FILE "$HOME/.config/fish/themes/lazygit/tokyonight_night.yml"
+        else
+            set -gx LG_CONFIG_FILE "$HOME/.config/fish/themes/lazygit/tokyonight_day.yml"
+        end
+
+    end
     #                                  ╭──────────╮
     #                                  │ Starship │
     #                                  ╰──────────╯
