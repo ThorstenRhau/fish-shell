@@ -46,17 +46,6 @@ if status is-interactive
         set -gx MANPAGER "nvim +Man! -"
     end
 
-    # Sourcing local files
-    set secrets_file "$HOME/.config/fish/secrets.fish"
-    if test -r $secrets_file
-        source $secrets_file
-    end
-
-    set local_file "$HOME/.config/fish/local.fish"
-    if test -r $local_file
-        source $local_file
-    end
-
     # Abbreviations and aliases
     abbr gc 'git commit' 
     abbr gca 'git commit -a'
@@ -157,6 +146,17 @@ if status is-interactive
         else
             ln -sf "$HOME/.config/fish/themes/yazi/tokyonight_day.toml" "$HOME/.config/yazi/theme.toml"
         end
+    end
+
+    # Sourcing local files
+    set secrets_file "$HOME/.config/fish/secrets.fish"
+    if test -r $secrets_file
+        source $secrets_file
+    end
+
+    set local_file "$HOME/.config/fish/local.fish"
+    if test -r $local_file
+        source $local_file
     end
 
     # Starship
