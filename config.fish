@@ -1,7 +1,5 @@
 if status is-interactive
-    #                                    ╭──────╮
-    #                                    │ PATH │
-    #                                    ╰──────╯
+
     # Initialize fish_user_paths if not already set
     set -q fish_user_paths; or set -x fish_user_paths
 
@@ -17,9 +15,7 @@ if status is-interactive
     safe_add_path $HOME/.rd/bin
     safe_add_path /usr/local/bin
 
-    #                                  ╭──────────╮
-    #                                  │ Homebrew │
-    #                                  ╰──────────╯
+    # Homebrew
     if test -d /opt/homebrew
         set -gx ARCHFLAGS "-arch arm64"
         set -gx HOMEBREW_PREFIX "/opt/homebrew"
@@ -28,9 +24,7 @@ if status is-interactive
         fish_add_path -p /opt/homebrew/bin
     end
 
-    #                                  ╭───────────╮
-    #                                  │ Variables │
-    #                                  ╰───────────╯
+    # Variables
     set -gx fish_greeting # Disable greeting function
     set -gx fish_history_limit 10000
     set -gx GREP_OPTIONS "--color=auto"
@@ -38,16 +32,12 @@ if status is-interactive
     set -gx LANG "en_US.UTF-8"
     set -gx XDG_CONFIG_HOME "$HOME/.config"
 
-    #                                     ╭─────╮
-    #                                     │ eza │
-    #                                     ╰─────╯
+    # Eza (ls replacement)
     if type -q eza
         alias ls "eza --header --git"
     end
 
-    #                                   ╭────────╮
-    #                                   │ neovim │
-    #                                   ╰────────╯
+    # Neovim
     if type nvim > /dev/null
         abbr nv 'nvim'
         set -gx EDITOR (which nvim)
@@ -56,9 +46,7 @@ if status is-interactive
         set -gx MANPAGER "nvim +Man! -"
     end
 
-    #                            ╭──────────────────────╮
-    #                            │ sourcing local files │
-    #                            ╰──────────────────────╯
+    # Sourcing local files
     set secrets_file "$HOME/.config/fish/secrets.fish"
     if test -r $secrets_file
         source $secrets_file
@@ -69,9 +57,7 @@ if status is-interactive
         source $local_file
     end
 
-    #                               ╭────────────────╮
-    #                               │ abbr and alias │
-    #                               ╰────────────────╯
+    # Abbreviations and aliases
     abbr gc 'git commit' 
     abbr gca 'git commit -a'
     abbr gd 'git diff'
@@ -85,18 +71,14 @@ if status is-interactive
     alias mosh "TERM=xterm-256color command mosh"
     alias ssh "TERM=xterm-256color command ssh"
 
-    #                                   ╭────────╮
-    #                                   │ zoxide │
-    #                                   ╰────────╯
+    # Zoxide
     if type zoxide > /dev/null
         zoxide init fish | source
         bind \cz zi 
         alias cd z
     end
 
-    #                                     ╭─────╮
-    #                                     │ fzf │
-    #                                     ╰─────╯
+    # FZF
     if type fzf > /dev/null
         fzf --fish | source
         set -gx FZF_DEFAULT_COMMAND 'fd --type f --hidden --exclude .git'
@@ -110,10 +92,7 @@ if status is-interactive
         set -gx FZF_COMPLETION_TRIGGER '**'
     end
 
-
-    #                       ╭────────────────────────────────╮
-    #                       │ macOS light / dark theme setup │
-    #                       ╰────────────────────────────────╯
+    # Themes and appearance
 
     # macOS check for light/dark appearance
     if type -q defaults
@@ -179,9 +158,8 @@ if status is-interactive
             ln -sf "$HOME/.config/fish/themes/yazi/tokyonight_day.toml" "$HOME/.config/yazi/theme.toml"
         end
     end
-    #                                  ╭──────────╮
-    #                                  │ Starship │
-    #                                  ╰──────────╯
+
+    # Starship
     starship init fish | source
 
 end
