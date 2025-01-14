@@ -13,6 +13,7 @@ if status is-interactive
     safe_add_path $HOME/.local/bin
     safe_add_path $HOME/.cache/lm-studio/bin
     safe_add_path $HOME/.rd/bin
+    safe_add_path $HOME/.docker/bin
     safe_add_path /usr/local/bin
 
     # Homebrew
