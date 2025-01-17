@@ -1,4 +1,4 @@
-# Thorsten's fish shell configuration
+# Thorsten's fish shell configuration (merged in to dotfiles repo)
 
 This is my fish shell configuration, it is public for easy cloning
 
